@@ -1,0 +1,7 @@
+* 20190918194237-create-pessoa_juridica.js - complementar cadastro de PJ.
+* Verificar tipos de onUpdate e onDelete.
+* Alterar nomeclatura para portugues.
+
+*****************************
+ DECIDIR O ESQUEMA DE TENANT
+*****************************

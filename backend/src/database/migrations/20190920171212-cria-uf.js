@@ -1,14 +1,21 @@
+'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pessoa_fisicas', {
-        id: {
-            type: Sequelize.INTEGER,
+    return queryInterface.createTable('uf', {
+        id :{
+            type: Sequelize.BIGINT,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
         },
-        cpf: {
-            type: Sequelize.STRING,
+        uf_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            unique: true,
+        },
+        uf: {
+            type: Sequelize.STRING(2),
             allowNull: false,
         },
         created_at: {
@@ -22,7 +29,7 @@ module.exports = {
     });
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('pessoa_fisicas');
+  down: queryInterface => {
+    return queryInterface.dropTable('uf');
   }
 };

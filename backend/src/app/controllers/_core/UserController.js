@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
-import User from '../models/User';
-import File from '../models/File';
+import User from '../../models/_core/User';
+import File from '../../models/_core/File';
 
 class UserController {
     async store(req, res) {
@@ -16,18 +16,18 @@ class UserController {
         });
 
         if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: 'Validation fails.' });
+            return res.status(400).json({ status: 'Falha na validação dos Dados!' });
         }
         const userExists = await User.findOne({
             where: { email: req.body.email },
         });
 
         if (userExists) {
-            return res.status(400).json({ error: 'User already exists.' });
+            return res.status(400).json({ status: 'Usuário já existe!' });
         }
         const { id, nome, email, provider } = await User.create(req.body);
 
-        return res.json({
+        return res.status(201).json({
             id,
             nome,
             email,
@@ -51,7 +51,7 @@ class UserController {
         });
 
         if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: 'Validation fails.' });
+            return res.status(400).json({ status: 'Falha na validação dos Dados!' });
         }
 
         const { email, oldPassword } = req.body;
@@ -64,12 +64,12 @@ class UserController {
             });
 
             if (userExists) {
-                return res.status(400).json({ error: 'User already exists.' });
+                return res.status(400).json({ status: 'Usuário já existe!' });
             }
         }
 
         if (oldPassword && !(await user.checkPassword(oldPassword))) {
-            return res.status(401).json({ error: 'Password does not match' });
+            return res.status(401).json({ status: 'Senha não informada!' });
         }
 
         await user.update(req.body);

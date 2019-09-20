@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import UserController from './app/controllers/UserController';
-import SessionController from './app/controllers/SessionController';
-import FileController from './app/controllers/FileController';
-import ProviderController from './app/controllers/ProviderController';
-import NotificationController from './app/controllers/NotificationController';
-import PessoaFisicaController from './app/controllers/PessoaFisicaController';
-import PessoaJuridicaController from './app/controllers/PessoaJuridicaController';
+import UserController from './app/controllers/_core/UserController';
+import SessionController from './app/controllers/_core/SessionController';
+import FileController from './app/controllers/_core/FileController';
+import ProviderController from './app/controllers/_core/ProviderController';
+import NotificationController from './app/controllers/_core/NotificationController';
+import PessoaFisicaController from './app/controllers/_core/PessoaFisicaController';
+import PessoaJuridicaController from './app/controllers/_core/PessoaJuridicaController';
 
 import authMiddleware from './app/middlewares/auth';
 import multerConfig from './config/multer';

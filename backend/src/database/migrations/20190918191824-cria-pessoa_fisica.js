@@ -1,15 +1,22 @@
+'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pessoa_juridicas', {
+    return queryInterface.createTable('pessoa_fisicas', {
         id: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.BIGINT,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
         },
-        cnpj: {
-            type: Sequelize.STRING,
+        cpf: {
+            type: Sequelize.STRING(11),
             allowNull: false,
+        },
+        status: {
+            type: Sequelize.STRING(20),
+            allowNull: false,
+            defaultValue: 'Inativo',
         },
         created_at: {
             type: Sequelize.DATE,
@@ -22,7 +29,7 @@ module.exports = {
     });
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('pessoa_juridicas');
+  down: queryInterface => {
+    return queryInterface.dropTable('pessoa_fisicas');
   }
 };

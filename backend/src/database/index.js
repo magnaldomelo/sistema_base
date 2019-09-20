@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 
 import databaseConfig from '../config/database';
 
-import User from '../app/models/User';
-import File from '../app/models/File';
-import Pessoa from '../app/models/Pessoa';
-import PessoaFisica from '../app/models/PessoaFisica';
-import PessoaJuridica from '../app/models/PessoaJuridica';
+import User from '../app/models/_core/User';
+import File from '../app/models/_core/File';
+import Pessoa from '../app/models/_core/Pessoa';
+import PessoaFisica from '../app/models/_core/PessoaFisica';
+import PessoaJuridica from '../app/models/_core/PessoaJuridica';
 
 const models = [User, File, Pessoa, PessoaFisica, PessoaJuridica];
 

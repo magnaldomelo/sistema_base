@@ -1,9 +1,11 @@
+'use strict';
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.addColumn('users', 'avatar_id', {
-            type: Sequelize.INTEGER,
+        return queryInterface.addColumn('pessoa_juridicas', 'representante_legal_id', {
+            type: Sequelize.BIGINT,
             references: {
-                model: 'files',
+                model: 'pessoas',
                 key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -13,6 +15,6 @@ module.exports = {
     },
 
     down: queryInterface => {
-        return queryInterface.removeColumn('users', 'avatar_id');
+        return queryInterface.removeColumn('pessoa_juridicas', 'representante_legal_id');
     },
 };

@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-import User from '../models/User';
-import File from '../models/File';
-import authConfig from '../../config/auth';
+import User from '../../models/_core/User';
+import File from '../../models/_core/File';
+import authConfig from '../../../config/auth';
 
 class SessionController {
     async store(req, res) {
@@ -20,11 +20,11 @@ class SessionController {
         });
 
         if (!user) {
-            return res.status(401).json({ error: 'User not found' });
+            return res.status(401).json({ status: 'Usuário não encontrado!' });
         }
 
         if (!(await user.checkPassword(password))) {
-            return res.status(401).json({ error: 'Password does not match' });
+            return res.status(401).json({ status: 'Senha não informada!' });
         }
 
         const { id, nome, avatar, provider } = user;

@@ -1,20 +1,31 @@
+'use strict';
+
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('files', {
+        return queryInterface.createTable('core.users', {
             id: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.BIGINT,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
             },
             nome: {
-                type: Sequelize.STRING,
+                type: Sequelize.STRING(150),
                 allowNull: false,
             },
-            path: {
-                type: Sequelize.STRING,
+            email: {
+                type: Sequelize.STRING(80),
                 allowNull: false,
                 unique: true,
+            },
+            password_hash: {
+                type: Sequelize.STRING(50),
+                allowNull: false,
+            },
+            provider: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false,
+                allowNull: false,
             },
             created_at: {
                 type: Sequelize.DATE,
@@ -23,11 +34,11 @@ module.exports = {
             updated_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
-            }
+            },
         });
     },
 
     down: queryInterface => {
-        return queryInterface.dropTable('files');
+        return queryInterface.dropTable('core.users');
     },
 };

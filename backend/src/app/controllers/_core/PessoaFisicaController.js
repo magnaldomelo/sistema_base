@@ -1,5 +1,7 @@
-import Pessoa from '../models/Pessoa';
-import PessoaFisica from '../models/PessoaFisica';
+import * as Yup from 'yup';
+
+import Pessoa from '../../models/_core/Pessoa';
+import PessoaFisica from '../../models/_core/PessoaFisica';
 
 class PessoaFisicaController {
     async store(req, res){
@@ -8,7 +10,7 @@ class PessoaFisicaController {
         const pessoa = await Pessoa.create({nome});
 
         if(!pessoa){
-            return res.status(500).json({erro: "Erro ao tentar criar Pessoa"});
+            return res.status(404).json({status: "Dados da Pessoa inconsistentes!"});
         }
 
         const { id } = pessoa;
@@ -19,7 +21,7 @@ class PessoaFisicaController {
         });
 
         if(!pessoaFisica){
-            return res.status(500).json({erro: "Erro ao tentar criar Pessoa Física"});
+            return res.status(404).json({status: "Dados da Pessoa Jurídica inconsistentes!"});
         }
 
         const { pessoafisica } = await Pessoa.findByPk(id, {
@@ -32,7 +34,7 @@ class PessoaFisicaController {
             ]
         });
 
-        return res.json({
+        return res.status(201).json({
             id,
             nome,
             pessoafisica,
