@@ -22,14 +22,6 @@ class PessoaFisicaController {
             return res.status(500).json({erro: "Erro ao tentar criar Pessoa Física"});
         }
 
-        /*const pessoaAtulizar = await Pessoa.findByPk(id);
-
-        if(!pessoaAtulizar){
-            return res.status(500).json({erro: "Erro ao buscar Pessoa"});
-        }
-
-        await pessoaFisica.update({pessoa_id: id});*/
-
         const { pessoafisica } = await Pessoa.findByPk(id, {
             include: [
                 {

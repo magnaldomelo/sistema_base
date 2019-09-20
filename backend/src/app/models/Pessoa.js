@@ -15,7 +15,7 @@ class Pessoa extends Model {
 
     static associate(models) {
         this.hasOne(models.PessoaFisica, { foreignKey: 'pessoa_id', as: 'pessoafisica' });
-        this.hasOne(models.PessoaJuridica, { foreignKey: 'pessoa_juridica_id', as: 'pessoajuridica' });
+        this.hasOne(models.PessoaJuridica, { foreignKey: 'pessoa_id', as: 'pessoajuridica' });
     }
 }
 
