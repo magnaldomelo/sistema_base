@@ -5,8 +5,11 @@ import databaseConfig from '../config/database';
 
 import User from '../app/models/User';
 import File from '../app/models/File';
+import Pessoa from '../app/models/Pessoa';
+import PessoaFisica from '../app/models/PessoaFisica';
+import PessoaJuridica from '../app/models/PessoaJuridica';
 
-const models = [User, File];
+const models = [User, File, Pessoa, PessoaFisica, PessoaJuridica];
 
 class Database {
     constructor() {

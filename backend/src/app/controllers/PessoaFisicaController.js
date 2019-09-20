@@ -3,34 +3,48 @@ import PessoaFisica from '../models/PessoaFisica';
 
 class PessoaFisicaController {
     async store(req, res){
-        try{
-            const { nome, cpf } = req.body;
+        const { nome, cpf } = req.body;
 
-            const pessoa = await Pessoa.create({
-                nome,
-            });
+        const pessoa = await Pessoa.create({nome});
 
-            return res.json(pessoa)
-        }catch(err){
-            return res.status(400).json({ok: true})
+        if(!pessoa){
+            return res.status(500).json({erro: "Erro ao tentar criar Pessoa"});
         }
 
+        const { id } = pessoa;
 
-            /*if(!pessoa){
-                return res.status(500).json({erro: "Erro ao tentar criar Pessoa"});
-            }
+        const pessoaFisica = await PessoaFisica.create({
+            cpf,
+            pessoa_id: id,
+        });
 
-            const pessoaFisica = await PessoaFisica.create({
-                cpf,
-            });
+        if(!pessoaFisica){
+            return res.status(500).json({erro: "Erro ao tentar criar Pessoa Física"});
+        }
 
-            if(!pessoaFisica){
-                return res.status(500).json({erro: "Erro ao tentar criar Pessoa Física"});
-            }
+        /*const pessoaAtulizar = await Pessoa.findByPk(id);
 
-            pessoaFisica.belongsTo(pessoa);
+        if(!pessoaAtulizar){
+            return res.status(500).json({erro: "Erro ao buscar Pessoa"});
+        }
 
-            return res.json(pessoaFisica);*/
+        await pessoaFisica.update({pessoa_id: id});*/
+
+        const { pessoafisica } = await Pessoa.findByPk(id, {
+            include: [
+                {
+                    model: PessoaFisica,
+                    as: 'pessoafisica',
+                    attributes: ['cpf'],
+                }
+            ]
+        });
+
+        return res.json({
+            id,
+            nome,
+            pessoafisica,
+        });
     }
 }
 

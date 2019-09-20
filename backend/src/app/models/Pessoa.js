@@ -12,8 +12,10 @@ class Pessoa extends Model {
         );
         return this;
     }
+
     static associate(models) {
-        this.hasOne(models.PessoaFisica, { foreignKey: 'pessoa_id', as: 'pessoa_fisica' });
+        this.hasOne(models.PessoaFisica, { foreignKey: 'pessoa_id', as: 'pessoafisica' });
+        this.hasOne(models.PessoaJuridica, { foreignKey: 'pessoa_juridica_id', as: 'pessoajuridica' });
     }
 }
 
