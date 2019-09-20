@@ -3,14 +3,18 @@ import PessoaFisica from '../models/PessoaFisica';
 
 class PessoaFisicaController {
     async store(req, res){
-        const { nome, cpf } = req.body;
+        try{
+            const { nome, cpf } = req.body;
 
-        const pessoaFisica = await PessoaFisica.create({
-            cpf,
-            pessoa: {
+            const pessoa = await Pessoa.create({
                 nome,
-            }
-        });
+            });
+
+            return res.json(pessoa)
+        }catch(err){
+            return res.status(400).json({ok: true})
+        }
+
 
             /*if(!pessoa){
                 return res.status(500).json({erro: "Erro ao tentar criar Pessoa"});
@@ -27,8 +31,6 @@ class PessoaFisicaController {
             pessoaFisica.belongsTo(pessoa);
 
             return res.json(pessoaFisica);*/
-        console.log('foi')
-        return res.json(pessoaFisica)
     }
 }
 

@@ -12,9 +12,6 @@ class PessoaFisica extends Model {
         );
         return this;
     }
-    static associate(models) {
-        this.belongsTo(models.Pessoa, { foreignKey: 'pessoa_id', as: 'pessoa' });
-    }
 }
 
 export default PessoaFisica;

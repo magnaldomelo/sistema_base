@@ -12,6 +12,9 @@ class Pessoa extends Model {
         );
         return this;
     }
+    static associate(models) {
+        this.hasOne(models.PessoaFisica, { foreignKey: 'pessoa_id', as: 'pessoa_fisica' });
+    }
 }
 
 export default Pessoa;
