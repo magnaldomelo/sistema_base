@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('uf', {
+    return queryInterface.createTable('core_uf', {
         id :{
             type: Sequelize.BIGINT,
             allowNull: false,
@@ -30,6 +30,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('uf');
+    return queryInterface.dropTable('core_uf');
   }
 };

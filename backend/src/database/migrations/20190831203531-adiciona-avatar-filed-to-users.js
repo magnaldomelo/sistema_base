@@ -2,10 +2,10 @@
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.addColumn('users', 'avatar_id', {
+        return queryInterface.addColumn('core_users', 'avatar_id', {
             type: Sequelize.BIGINT,
             references: {
-                model: 'files',
+                model: 'core_files',
                 key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -15,6 +15,6 @@ module.exports = {
     },
 
     down: queryInterface => {
-        return queryInterface.removeColumn('users', 'avatar_id');
+        return queryInterface.removeColumn('core_users', 'avatar_id');
     },
 };

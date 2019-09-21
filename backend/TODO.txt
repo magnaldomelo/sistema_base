@@ -5,3 +5,11 @@
 *****************************
  DECIDIR O ESQUEMA DE TENANT
 *****************************
+
+Cadastro PF
+
+Cadastro de Aluno
+*certidao_nascimento
+
+
+

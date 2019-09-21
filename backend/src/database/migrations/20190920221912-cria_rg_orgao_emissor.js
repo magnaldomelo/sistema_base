@@ -2,21 +2,16 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('core_municipios', {
-        id :{
+    return queryInterface.createTable('core_rg_orgaos', {
+        id: {
             type: Sequelize.BIGINT,
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
         },
-        cep: {
-            type: Sequelize.STRING(20),
+        nome: {
+            type: Sequelize.STRING(120),
             allowNull: false,
-            unique: false,
-        },
-        bairro: {
-            type: Sequelize.STRING(150),
-            allowNull: true,
         },
         created_at: {
             type: Sequelize.DATE,
@@ -30,6 +25,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('core_municipios');
+    return queryInterface.dropTable('core_rg_orgaos');
   }
 };

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pessoa_juridicas', {
+    return queryInterface.createTable('core_pessoa_juridicas', {
         id: {
             type: Sequelize.BIGINT,
             allowNull: false,
@@ -18,8 +18,8 @@ module.exports = {
             allowNull: false,
             defaultValue: 'ISENTO',
         },
-        inscricao_estadual_uf: {
-            type: Sequelize.STRING(2),
+        inscricao_estadual_uf_id: {
+            type: Sequelize.INTEGER,
             allowNull: true,
         },
         inscricao_municipal: {
@@ -52,6 +52,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('pessoa_juridicas');
+    return queryInterface.dropTable('core_pessoa_juridicas');
   }
 };

@@ -2,10 +2,10 @@
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.addColumn('municipios', 'pais_id', {
+        return queryInterface.addColumn('core_municipios', 'pais_id', {
             type: Sequelize.BIGINT,
             references: {
-                model: 'pais',
+                model: 'core_pais',
                 key: 'id',
             },
             onUpdate: 'CASCADE',
@@ -15,6 +15,6 @@ module.exports = {
     },
 
     down: queryInterface => {
-        return queryInterface.removeColumn('municipios', 'pais_id');
+        return queryInterface.removeColumn('core_municipios', 'pais_id');
     },
 };
